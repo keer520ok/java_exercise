@@ -8,7 +8,7 @@ package practice.basic;
  * 質問1：全て合わせるといくらになるか？
  * 質問2：微信が10元の赤い封筒を受け取り、2元の赤い封筒を送った後の残高はいくらか？
  */
-public class ex01 {
+public class Ex01 {
     public static void main(String[] args) {
         // 各口座残高
         double wechat = 0;

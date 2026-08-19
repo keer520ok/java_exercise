@@ -8,7 +8,7 @@ import java.util.Scanner;
  * 出力：BMI値、身体状態、健康リスク
  * 問題種別：入出力・条件分岐練習
  */
-public class ex02 {
+public class Ex02 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
