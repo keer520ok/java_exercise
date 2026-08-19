@@ -29,7 +29,14 @@ public class Ex02 {
         System.out.println("条件に合う数字の個数：" + count);
     }
 
-    // 最大公約数を計算
+    /**
+     * 最大公約数(GCD)を計算するメソッド
+     * ユークリッド互除法を使用
+     *
+     * @param a 整数1
+     * @param b 整数2
+     * @return aとbの最大公約数
+     */
     public static int gcd(int a, int b) {
         while (b != 0) {
             int n = a % b;
@@ -39,9 +46,16 @@ public class Ex02 {
         return a;
     }
 
-    // 最小公倍数を計算
+    /**
+     * 最小公倍数(LCM)を計算するメソッド
+     * 最大公約数を利用して算出
+     * a / gcd(a,b) * b の順で計算し、intのオーバーフローを軽減
+     *
+     * @param a 整数1
+     * @param b 整数2
+     * @return aとbの最小公倍数
+     */
     public static int lcmVal(int a, int b) {
-        //a / gcd(a,b) * b の順番：先に割り算をすることで int のオーバーフローを軽減するテクニック
         return a / gcd(a, b) * b;
     }
 }
