@@ -1,4 +1,4 @@
-package practice.basic;
+package practice.condition;
 
 import java.util.Scanner;
 
@@ -45,7 +45,7 @@ public class Ex02 {
      * @param bmi BMI数値
      * @return BmiResult 結果オブジェクト
      */
-    public static BmiResult getBMIStatus(double bmi) {
+    static BmiResult getBMIStatus(double bmi) {
         String status;
         String risk;
         if (bmi < 18.5) {
