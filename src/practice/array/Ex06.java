@@ -43,17 +43,14 @@ public class Ex06 {
         }
 
         // arr1に残った要素を全部代入
-        if (j < arr1.length) {
-            while (i < newArr.length) {
-                newArr[i++] = arr1[j++];
-            }
+        while (j < arr1.length) {
+            newArr[i++] = arr1[j++];
         }
         // arr2に残った要素を全部代入
-        if (k < arr2.length) {
-            while (i < newArr.length) {
-                newArr[i++] = arr2[k++];
-            }
+        while (k < arr2.length) {
+            newArr[i++] = arr2[k++];
         }
+
         return newArr;
     }
 }
