@@ -37,9 +37,7 @@ public class Ex04 {
 
         // 重複分を除いた新しい配列を作成
         int[] newArr = new int[uniqueCount + 1];
-        for (int j = 0; j < newArr.length; j++) {
-            newArr[j] = sortedArr[j];
-        }
+        System.arraycopy(sortedArr, 0, newArr, 0, newArr.length);
         return newArr;
     }
 }
