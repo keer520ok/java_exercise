@@ -7,13 +7,30 @@ import java.util.Random;
  */
 public class Ex03 {
     public static void main(String[] args) {
-        Random r = new Random();
-        int[] arr = new int[10];
-        int i = 0;
 
+        int[] arr = is(10, 0, 100);
+        for (int i1 : arr) {
+            System.out.println(i1);
+        }
+
+    }
+
+    /**
+     * 指定個数、指定範囲の重複なし乱数配列を返す
+     *
+     * @param count 要素数
+     * @param min   最小値
+     * @param max   最大値
+     * @return 重複なしのint配列
+     */
+    private static int[] is(int count, int min, int max) {
+        Random r = new Random();
+        int[] arr = new int[count];
+
+        int i = 0;
         // 配列が10個埋まるまで繰り返し
         while (i < arr.length) {
-            int n = r.nextInt(101);
+            int n = r.nextInt(min, max + 1);
             // 重複チェック
             boolean flag = checkDuplicate(arr, i, n);
             // 重複していなければ配列へ保存
@@ -22,10 +39,7 @@ public class Ex03 {
                 i++;
             }
         }
-        for (int i1 : arr) {
-            System.out.println(i1);
-        }
-
+        return arr;
     }
 
     /**
@@ -36,7 +50,7 @@ public class Ex03 {
      * @param num          確認する数値
      * @return 重複:false  重複なし:true
      */
-    public static boolean checkDuplicate(int[] arr, int filledLength, int num) {
+    private static boolean checkDuplicate(int[] arr, int filledLength, int num) {
         for (int j = 0; j < filledLength; j++) {
             if (num == arr[j]) return false;
         }
