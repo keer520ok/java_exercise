@@ -93,7 +93,12 @@ public class Ex07 {
      * @return 除外後の平均値
      */
     private static double calcAverageTrim(int[] scores) {
+        //"点数配列の要素数は3個以上必要です"
+        if (scores == null || scores.length < 3) {
+            return 0.0;
+        }
         int validCount = scores.length - 2;
-        return (getSum(scores) - getMax(scores) - getMin(scores)) / (double) validCount;
+        int total = getSum(scores) - getMax(scores) - getMin(scores);
+        return total / (double) validCount;
     }
 }
