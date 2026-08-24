@@ -44,7 +44,7 @@ public class Ex08 {
      * @param arr 点数配列
      * @return 合格した人数
      */
-    public static int getPassCount(int[] arr) {
+    private static int getPassCount(int[] arr) {
         int count = 0;
         for (int score : arr) {
             if (score >= 60) {
@@ -60,7 +60,7 @@ public class Ex08 {
      * @param arr 点数配列
      * @return 合計点
      */
-    public static int getTotal(int[] arr) {
+    private static int getTotal(int[] arr) {
         int sum = 0;
         for (int score : arr) {
             sum += score;
@@ -74,7 +74,7 @@ public class Ex08 {
      * @param arr 点数配列
      * @return 最高点
      */
-    public static int getMaxScore(int[] arr) {
+    private static int getMaxScore(int[] arr) {
         int max = arr[0];
         for (int score : arr) {
             if (score > max) {
