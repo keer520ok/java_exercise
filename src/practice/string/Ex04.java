@@ -9,6 +9,9 @@ public class Ex04 {
         System.out.println(subtract("00123", "045"));    // 78
     }
 
+    /**
+     * 2つの非負整数文字列の減算結果を返す
+     */
     private static String subtract(String num1, String num2) {
         // 前処理：前ゼロ除去
         num1 = removeLeadingZeros(num1);
@@ -76,10 +79,10 @@ public class Ex04 {
      * 先頭の余分なゼロを除去
      */
     private static String removeLeadingZeros(String num) {
-        int idx = 0;
-        while (idx < num.length() - 1 && num.charAt(idx) == '0') {
-            idx++;
+        int dex = 0;
+        while (dex < num.length() - 1 && num.charAt(dex) == '0') {
+            dex++;
         }
-        return num.substring(idx);
+        return num.substring(dex);
     }
 }
