@@ -14,7 +14,7 @@ public class Ex02 {
         String n2 = sc.next();
         String result = addStrings(n1, n2);
         System.out.println("計算結果：" + result);
-
+        sc.close();
     }
 
     /**
