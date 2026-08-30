@@ -24,19 +24,21 @@ public class Ex09 {
      */
     private static String generateCode() {
         StringBuilder sb = new StringBuilder(5);
-
+        // ランダムな位置に数字を1つ挿入
+        final int digitPosition = RANDOM.nextInt(5);
         // アルファベット4文字を生成（大文字小文字ランダム）
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 5; i++) {
+            if (i == digitPosition) {
+                int digit = RANDOM.nextInt(10);
+                sb.append(digit);
+                continue;
+            }
             // trueなら大文字、falseなら小文字
             char baseChar = RANDOM.nextBoolean() ? 'A' : 'a';
             char c = (char) (baseChar + RANDOM.nextInt(26));
             sb.append(c);
         }
 
-        // ランダムな位置に数字を1つ挿入
-        int digitPosition = RANDOM.nextInt(5);
-        int digit = RANDOM.nextInt(10);
-        sb.insert(digitPosition, digit);
 
         return sb.toString();
     }
