@@ -274,7 +274,6 @@ public class GameSystem {
             System.out.println(Arrays.toString(statusValues));
             // ポイントを全て使い切った場合
             if (point == 0) {
-                // 基礎値＋割当ポイントより最終ステータスを計算
                 AttributeType hp = AttributeType.HP;
                 AttributeType atk = AttributeType.ATTACK;
                 AttributeType defense = AttributeType.DEFENSE;
@@ -303,9 +302,9 @@ public class GameSystem {
                     sc.nextLine();
                     switch (r) {
                         case "Y": {
-                            int finalHp = Hero.calcFinalStat(hp, hpAssignPoint);
-                            int finalAtk = Hero.calcFinalStat(atk, atkAssignPoint);
-                            int finalDefense = Hero.calcFinalStat(defense, defAssignPoint);
+                            int finalHp = Hero.calcFinalStat(hp, hpBonusValue);
+                            int finalAtk = Hero.calcFinalStat(atk, atkBonusValue);
+                            int finalDefense = Hero.calcFinalStat(defense, defBonusValue);
                             return new Hero(username, finalHp, finalAtk, finalDefense);
                         }
                         case "N":

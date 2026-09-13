@@ -65,13 +65,21 @@ public class Hero extends GameCharacter {
         return ownSkills;
     }
 
-    public static int calcFinalStat(AttributeType type, int assignPoint) {
+    /**
+     * 最終ステータス値を計算する
+     * ベース値に属性ポイント由来のボーナス値を加算して返却
+     *
+     * @param type       計算対象の属性種別
+     * @param bonusValue 属性ポイントによるボーナス合計値
+     * @return ベース値＋ボーナスを加算した最終ステータス
+     */
+    public static int calcFinalStat(AttributeType type, int bonusValue) {
         int baseValue = switch (type) {
             case HP -> BASE_HP;
             case ATTACK -> BASE_ATK;
             case DEFENSE -> BASE_DEF;
         };
-        return baseValue + assignPoint * type.getPerPoint();
+        return baseValue + bonusValue;
     }
 
 }
