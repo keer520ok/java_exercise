@@ -238,8 +238,8 @@ public class GameSystem {
     private Hero createHeroByAssign(String username) {
         // 割り当て可能な最大ポイント
         final int assignMaxPoint = 20;
-        // 各属性の割当回数を格納する配列
-        final int[] statusValues = new int[ATTR_TYPES.length];
+        // 各属性に割り当てた属性ポイントを保持する配列
+        final int[] assignedAttrPoints = new int[ATTR_TYPES.length];
         // 残り割当ポイント
         int point = assignMaxPoint;
 
@@ -267,19 +267,19 @@ public class GameSystem {
                 continue;
             } else {
                 // 属性にポイントを割り当て、消費したポイント数を取得
-                int consumedPoint = assignPoint(byMenuId, point, statusValues);
+                int consumedPoint = assignPoint(byMenuId, point, assignedAttrPoints);
                 point -= consumedPoint;
                 System.out.println("割り当て成功");
             }
-            System.out.println(Arrays.toString(statusValues));
+            System.out.println(Arrays.toString(assignedAttrPoints));
             // ポイントを全て使い切った場合
             if (point == 0) {
                 AttributeType hp = AttributeType.HP;
                 AttributeType atk = AttributeType.ATTACK;
                 AttributeType defense = AttributeType.DEFENSE;
-                int hpAssignPoint = statusValues[hp.getIndex()];
-                int atkAssignPoint = statusValues[atk.getIndex()];
-                int defAssignPoint = statusValues[defense.getIndex()];
+                int hpAssignPoint = assignedAttrPoints[hp.getIndex()];
+                int atkAssignPoint = assignedAttrPoints[atk.getIndex()];
+                int defAssignPoint = assignedAttrPoints[defense.getIndex()];
                 // HP属性ポイント × 1ポイントあたりの上昇値
                 int hpBonusValue = hpAssignPoint * hp.getPerPoint();
                 // 攻撃属性ポイント × 1ポイントあたりの上昇値
@@ -309,7 +309,7 @@ public class GameSystem {
                         }
                         case "N":
                             // 配列を初期化、ポイントを最大値に戻し再割当へ
-                            Arrays.fill(statusValues, 0);
+                            Arrays.fill(assignedAttrPoints, 0);
                             point = assignMaxPoint;
                             flag = true;
                             break;
@@ -327,10 +327,10 @@ public class GameSystem {
      *
      * @param byMenuId     割当対象の属性種別
      * @param point        割当可能な残りポイント
-     * @param statusValues ステータスを保持する配列
+     * @param assignedAttrPoints 各属性に割り当てたポイントを保持する配列
      * @return int 実際に消費したポイント数
      */
-    private int assignPoint(AttributeType byMenuId, int point, int[] statusValues) {
+    private int assignPoint(AttributeType byMenuId, int point, int[] assignedAttrPoints) {
         System.out.printf("%sの属性ポイントを割り当ててください（合計%dポイント）：", byMenuId.getName(), point);
         while (true) {
             if (!sc.hasNextInt()) {
@@ -348,7 +348,7 @@ public class GameSystem {
             System.out.println("全ポイント割り当て");
             consumedPoint = point;
         }
-        statusValues[byMenuId.getIndex()] += consumedPoint;
+        assignedAttrPoints[byMenuId.getIndex()] += consumedPoint;
         return consumedPoint;
     }
 
