@@ -19,16 +19,23 @@ public class Ex11 {
      */
     private static boolean isPalindrome(int num) {
         // 負数、または0以外で末尾が0の数は回文数になりえない
-        if (num < 0 || (num % 10 == 0 && num != 0)) return false;
+        if (num < 0 || (num % 10 == 0 && num != 0)) {
+            return false;
+        }
         if (num <= 9) return true;
 
-        int tmep = num;
         int reversedHalf = 0;
-        while (tmep > 0) {
-            reversedHalf = reversedHalf * 10 + tmep % 10;
-            tmep /= 10;
-        }
-        return reversedHalf == num;
+        // 元の数が反転後の数以下になったら、半分の桁まで処理したと判定
+        while (num > reversedHalf) {
+            // 末尾桁を取り出し、反転数の末尾に追加
+            reversedHalf = reversedHalf * 10 + num % 10;
 
+            // 元の数から末尾桁を削除
+            num = num / 10;
+        }
+
+        // 偶数桁の場合：xと反転数が完全一致
+        // 奇数桁の場合：反転数を10で割って中央の桁を除外して比較
+        return num == reversedHalf || num == reversedHalf / 10;
     }
 }
